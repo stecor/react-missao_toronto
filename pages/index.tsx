@@ -18,7 +18,6 @@ const Home: NextPage = () => {
         {posts.map((post, index) => (
           <div key={index}>
             {post.title}
-            {post.description}
           </div>
         ))}
       </div>
