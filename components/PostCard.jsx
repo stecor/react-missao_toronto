@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import moment from 'moment';
 
 const PostCard = ({ post }) => {
   return (
@@ -6,7 +7,7 @@ const PostCard = ({ post }) => {
       {post.title}
       {post.description}
     </div>
-  )
-}
+  );
+};
 
-export default PostCard
+export default PostCard;
