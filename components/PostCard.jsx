@@ -1,10 +1,10 @@
-import React from 'react';
-import moment from 'moment';
-import Link from 'next/link';
-import Image from 'next/image';
+import React from "react"
+import moment from "moment"
+import Link from "next/link"
+import Image from "next/image"
 
 const PostCard = ({ post }) => {
-  console.log(post);
+  console.log(post)
   return (
     <div className="mb-8 rounded-lg bg-white p-0 pb-12 shadow-lg lg:p-8">
       <div className="relative mb-6 overflow-hidden pb-80 shadow-md">
@@ -46,7 +46,7 @@ const PostCard = ({ post }) => {
               d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
             />
           </svg>
-          <span>{moment(post.createdAt).format('MMM DD, YYYY')}</span>
+          <span>{moment(post.createdAt).format("MMM DD, YYYY")}</span>
         </div>
       </div>
       <p className="mb-8 px-4 text-center text-lg font-normal text-gray-700 lg:px-20">
@@ -60,7 +60,7 @@ const PostCard = ({ post }) => {
         </Link>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default PostCard;
+export default PostCard
