@@ -11,18 +11,18 @@ const Header = () => {
   }, [])
 
   return (
-    <div className="container mx-auto mb-8 px-10">
-      <div className="inline-block w-full border-b border-white py-8">
-        <div className="flex justify-center  md:float-left">
+    <div className="container mx-auto mb-8 px-10 ">
+      <div className="inline-block w-full border-b border-white py-8 ">
+        <div className="text-center  lg:float-left  lg:flex lg:justify-center">
           <Image
             src="/logo.jpg"
             alt="Igreja Missão Toronto"
             width="80px"
             height="80px"
-            className="absolute h-80 w-full rounded-t-lg object-cover object-top  shadow-lg lg:rounded-lg"
+            className=" h-80 w-full rounded-full object-top    shadow-lg lg:rounded-full"
           />
           <Link href="/">
-            <span className="mt-5 ml-7 cursor-pointer text-5xl font-bold text-white">
+            <span className=" float-left mt-5 ml-7 cursor-pointer  text-5xl font-bold text-white">
               Igreja Missão Toronto
             </span>
           </Link>
