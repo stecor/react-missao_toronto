@@ -9,14 +9,37 @@ const CommentsForm = ({ slug }) => {
   const emailEl = useRef()
   const storeDataEl = useRef()
 
-  const handleCommentSubmission = () => {}
+  const handleCommentSubmission = () => {
+    setError(false)
+
+    const { value: comment } = commentEl.current
+    const { value: name } = nameEl.current
+    const { value: email } = emailEl.current
+    const { checked: storeData } = storeDataEl.current
+
+    if (!comment || !name || email) {
+      setError(true)
+      return
+    }
+
+    const commentObj = { name, email, comment, slug }
+
+    if (storeData) {
+      localStorage.setItem('name', name)
+      localStorage.setItem('email', email)
+    } else {
+      localStorage.removeItem('name', name)
+      localStorage.removeItem('email', email)
+    }
+  }
+
   return (
     <div className="rounded-lg bg-white p-8 pb-12 shadow-lg">
       <h3 className="mb-8 border-b pb-4 text-xl font-semibold">CommentsForm</h3>
       <div className="mb-4 grid grid-cols-1 gap-4">
         <textarea
           href={commentEl}
-          className="w-full rounded-lg bg-gray-100 p-4 text-gray-700 outline-none focus:ring-2 focus:ring-gray-200"
+          className="w-full rounded-lg bg-gray-200 p-4 text-gray-800 outline-none focus:ring-2 focus:ring-gray-200"
           placeholder="Comment"
           name="comment"
         />
@@ -25,7 +48,7 @@ const CommentsForm = ({ slug }) => {
         <input
           type="text"
           ref={nameEl}
-          className="w-full rounded-lg bg-gray-100 py-2 px-4 text-gray-700 outline-none focus:ring-2 focus:ring-gray-200 lg:grid-cols-2"
+          className="w-full rounded-lg bg-gray-200 py-2 px-4 text-gray-800 outline-none focus:ring-2 focus:ring-gray-200 lg:grid-cols-2"
           placeholder="Name"
           name="name"
         />
@@ -33,10 +56,27 @@ const CommentsForm = ({ slug }) => {
         <input
           type="text"
           ref={emailEl}
-          className="w-full rounded-lg bg-gray-100 py-2 px-4 text-gray-700 outline-none focus:ring-2 focus:ring-gray-200"
+          className="w-full rounded-lg bg-gray-200 py-2 px-4 text-gray-800 outline-none focus:ring-2 focus:ring-gray-200"
           placeholder="Email"
           name="email"
         />
+      </div>
+      <div className="mb-4 grid grid-cols-1 gap-4">
+        <div>
+          <input
+            ref={storeDataEl}
+            type="checkbox"
+            id="storeData"
+            name="storeData"
+            value="true"
+          />
+          <label
+            htmlFor="storeData"
+            className="ml-2 cursor-pointer text-gray-500"
+          >
+            Save my name and email for the next time I comment.
+          </label>
+        </div>
       </div>
       {error && (
         <p className="text-xs text-red-500">All fields are required.</p>
