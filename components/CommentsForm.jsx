@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 
-const CommentsForm = ({slug}) => {
+const CommentsForm = ({ slug }) => {
+  const [error, setError] = useState(second)
   return (
-    const [error, setError] = useState(second)
     <div>
       <h1>CommentsForm</h1>
     </div>
