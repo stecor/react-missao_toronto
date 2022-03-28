@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect } from 'react'
-
 import { submitComment } from '../services'
 
 const CommentsForm = ({ slug }) => {
@@ -24,19 +23,19 @@ const CommentsForm = ({ slug }) => {
     const { value: email } = emailEl.current
     const { checked: storeData } = storeDataEl.current
 
-    if (!comment || !name || email) {
+    if (!comment || !name || !email) {
       setError(true)
       return
     }
 
     const commentObj = { name, email, comment, slug }
 
-    if (storeData) {
-      localStorage.setItem('name', name)
-      localStorage.setItem('email', email)
+    if (storeDataEl) {
+      window.localStorage.setItem('name', name)
+      window.localStorage.setItem('email', email)
     } else {
-      localStorage.removeItem('name', name)
-      localStorage.removeItem('email', email)
+      window.localStorage.removeItem('name', name)
+      window.localStorage.removeItem('email', email)
     }
     submitComment(commentObj).then((res) => {
       setShowSuccessMessage(true)
@@ -53,7 +52,8 @@ const CommentsForm = ({ slug }) => {
       </h3>
       <div className="mb-4 grid grid-cols-1 gap-4">
         <textarea
-          href={commentEl}
+          type="text"
+          ref={commentEl}
           className="w-full rounded-lg bg-gray-200 p-4 text-gray-800 outline-none focus:ring-2 focus:ring-gray-200"
           placeholder="Comment"
           name="comment"
@@ -93,6 +93,7 @@ const CommentsForm = ({ slug }) => {
           </label>
         </div>
       </div>
+      {console.log(error)}
       {error && (
         <p className="text-xs text-red-500">All fields are required.</p>
       )}
