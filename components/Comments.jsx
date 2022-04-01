@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import moment from 'moment'
 import parse from 'html-react-parser'
 import { getComments } from '../services'
-import { comment } from 'postcss'
 
 const Comments = ({ slug }) => {
   const [comments, setComments] = useState([])
@@ -13,7 +12,7 @@ const Comments = ({ slug }) => {
 
   return (
     <>
-      {comment.length > 0 && (
+      {comments.length > 0 && (
         <div className="mb-8 rounded-lg bg-white p-8 pb-12 shadow-lg">
           <h3 className="mb-8 border-b pb-4 text-xl font-semibold">
             {comments.length} Comment(s)
