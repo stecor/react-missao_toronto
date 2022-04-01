@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { submitComment } from '../services'
+import { setTimeout } from 'react'
 
 const CommentsForm = ({ slug }) => {
   const [error, setError] = useState(false)
